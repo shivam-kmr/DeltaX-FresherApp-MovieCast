@@ -1,0 +1,77 @@
+
+<h3>{{viewTitle}}</h3>
+<form action = "/imdb" method = "POST" autocomplete="off " enctype="multipart/form-data">
+  <input type="hidden" name="_id" value="{{imdb._id}}">
+    <div class = "form-group">
+        <label>Movie Name</label>
+        <input type = "text" class ="form-control" name = "movieName" placeholder="Full Name" value="{{imdb.movieName}}" required />
+        <div class="text-danger">{{imdb.movieNameError}}</div>
+    </div>
+     <div class = "form-group">
+        <label>Year of Release</label>
+        <input type = "text" class ="form-control" name = "yearOfRelease" placeholder="yearOfRelease"value="{{imdb.yearOfRelease}}"  min="" max="100" required />
+         <div class="text-danger">{{imdb.yearOfReleaseError}}</div>
+    </div>
+    <div class = "form-group">
+        <label>Plot</label>
+        <input type = "text" class ="form-control" name = "plot" placeholder="plot" value="{{imdb.plot}}" required />
+        <div class="text-danger">{{imdb.plotError}}</div>
+    </div>
+    <div class="form-row">
+    <div class = "form-group" col-md-6>
+        <label>Cast</label>
+
+            
+                <div>
+                    <ul><li onclick="this.parentNode.removeChild(this);"> </li></ul>
+                          
+                    <select class="item" onchange="selectActor(this);" />
+                        <option value="" selected> Choose Cast here</option>
+                        {{# each items }}
+                            <option value="{{this.actorName}}"> "{{this.actorName}}"</option>
+                        {{/each}}
+                    </select>
+                        <h6>Click on Cast Name to remove it!</h6>
+                        <a href = "/imdb/editactor"><i class="fa fa-plus-circle">Add New Cast</i></a>
+                </div>
+        </div>
+    </div>
+    <div class = "form-group">
+        <label>Poster</label>
+        <input type = "file" class ="form-control" accept="image/*" name = "poster" placeholder="plot" value="{{imdb.poster}}" required / >
+        <div class="text-danger">{{imdb.posterError}}</div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-info"><i class="fa fa-database"></i>Submit!</button>
+    </div>
+
+
+</form>
+
+<script>
+    function selectActor(select){
+        var option = select.options[select.selectedIndex];
+        var ul = select.parentNode.getElementsByTagName('ul')[0];
+        var choices = ul.getElementsByTagName('input');
+        
+        for (var i = 0; i < choices.length; i++)
+            if (choices[i].value == option.value)
+            return;
+            
+        var li = document.createElement('li');
+        var input = document.createElement('input');
+        var text = document.createTextNode(option.firstChild.data);
+            
+        input.type = 'hidden';
+        input.name = 'actor[]';
+        input.value = option.value;
+
+        li.appendChild(input);
+        li.appendChild(text);
+        li.setAttribute('onclick', 'this.parentNode.removeChild(this);');     
+            
+        ul.appendChild(li);
+        console.log(choices[0])
+    }
+</script>

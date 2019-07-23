@@ -1,0 +1,28 @@
+<h3>Movies List <a class="btn btn-secondary" href="/imdb"><i class="fa fa-plus"></i> Add Movie</a> </h3>
+<table class = "table table-stripped">
+    <thead>
+        <th>Poster</th>
+        <th>Movie Name</th>
+        <th>Year of Release</th>
+        <th>Plot</th>
+        <th>Cast</th>
+        <th></th>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr><td><img src="/{{this.poster}}" height="100" width="100"></td>
+            <td>{{this.movieName}}</td>
+            <td>{{this.yearOfRelease}}</td>
+            <td>{{this.plot}}</td>
+            <td>{{this.cast}}</td>
+            <td>
+                <a href="/imdb/{{this._id}}"><i class = "fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                
+              
+
+            </td>
+        </tr>
+
+        {{/each}}
+    </tbody>
+</table>

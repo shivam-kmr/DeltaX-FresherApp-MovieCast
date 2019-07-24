@@ -30,23 +30,6 @@ router.get('/',(req,res)=>{
   });
 });
 
-router.get('/get-data', function(req, res, next) {
-    var resultArray = [];
-    mongo.connect("mongodb://localhost:27017/imdb", function(err, db) {
-      assert.equal(null, err);
-      var cursor = db.collection('actors').find();
-      cursor.forEach(function(doc, err) {
-        assert.equal(null, err);
-        resultArray.push(doc);
-      }, function() {
-        db.close();
-        res.render("imdb/addOrEdit", {items: resultArray, viewTitle : "Insert Movie or TV Show!"});
-      });
-    });
-  });
-
-
-
 router.get('/editactor',(req,res)=>{
     res.render("actor/addorEditActor",{
         viewTitle : "Add Actor's!"

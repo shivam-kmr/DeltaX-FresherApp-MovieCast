@@ -13,7 +13,7 @@
     "crypto-browserify": "^3.12.0",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
-    "mongoose": "^5.3.4",
+    "mongoose": "^5.7.5",
     "multer": "^1.4.2",
     "nodemon": "^1.19.1",
     "popup": "0.0.3",

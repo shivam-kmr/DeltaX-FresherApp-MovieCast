@@ -48,22 +48,7 @@ Name, Year of Release, Plot, MoviePoster
 1. Image does not update after being updated.
 
 # Database 
-This app uses a MongoDB for storing all the data. Setting of the database connection string is done through the /models/db.js file. There are two properties relating to the database connection:
-
------code starts below-----/models/db.js
-
- const mongoose = require('mongoose');
-
- mongoose.connect('mongodb://localhost:27017/imdb',{useNewUrlParser:true},(err)=>{
-    if(!err){console.log("Mongo db Connection Success!")}
-    else{console.log("Opps! Error in DB Connection :"+err)}
- });
-
- require('./movie.model');
- require('./actor.model');
-
-------code ends above------/models/db.js
-
+This app uses a MongoDB for storing all the data. Setting of the database connection string is done through the /models/db.js file. 
 Thank you for Your Time!
 
 
